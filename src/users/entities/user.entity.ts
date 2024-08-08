@@ -1,3 +1,4 @@
+import { Post } from 'src/posts/entities/post.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -14,7 +15,6 @@ export class User {
   @Column()
   password: string;
 
-  //   TODO after create reviews resource
-  //   @OneToMany(() => Review, (review) => review.user)
-  //   reviews: Review[];
+  @OneToMany(() => Post, (post) => post.user)
+  posts: Post[];
 }
