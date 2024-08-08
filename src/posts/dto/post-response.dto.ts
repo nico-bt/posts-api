@@ -17,7 +17,10 @@ export class PostResponseDto {
   updatedAt: string;
 
   @Transform(({ obj }) => {
-    return { userId: obj.user.id, username: obj.user.username };
+    return {
+      id: obj.user.id,
+      name: obj.user.firstname + ' ' + obj.user.lastname,
+    };
   })
   @Expose()
   user: number;
