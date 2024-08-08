@@ -6,11 +6,14 @@ import {
   Param,
   ParseIntPipe,
   HttpCode,
+  UseGuards,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { AuthService } from './auth.service';
 import { SigninUserDto } from './dto/signin-user.dto';
+import { CurrentUser } from './decorators/current-user.decorator';
+import { AuthGuard } from './guards/auth.guard';
 
 @Controller('users')
 export class UsersController {
@@ -28,6 +31,12 @@ export class UsersController {
   @Post('signin')
   signin(@Body() signinUserDto: SigninUserDto) {
     return this.authService.signin(signinUserDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Get('me')
+  userInfo(@CurrentUser() user: any) {
+    return user;
   }
 
   @Get()
