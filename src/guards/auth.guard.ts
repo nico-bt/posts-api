@@ -1,6 +1,6 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import * as jwt from 'jsonwebtoken';
-import { UsersService } from '../users.service';
+import { UsersService } from 'src/users/users.service';
 
 interface payloadJwtType {
   id: number;
