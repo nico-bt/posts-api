@@ -1,73 +1,233 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Descripción
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Rest API para gestionar posts de usuarios.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Techs:
 
-## Description
+- Nest.js
+- TypeORM
+- JWT para auth
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Entity Relationship Diagram
 
-## Installation
+![Entities Diagram](./tasks-er-diagram.png)
+
+## API Endpoints:
+
+<table>
+  <tr>
+    <th>HTTP Method</th>
+    <th>Endpoint</th>
+    <th>Description</th>
+    <th>Payload</th>
+    <th>Response</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan="4"><strong>posts</strong></td>
+  </tr>
+  <tr>
+    <td>POST</td>
+    <td>/posts</td>
+    <td>Create a new post</td>
+    <td>
+        { 
+            title: string,<br> 
+            content: string 
+        }<br><br>
+    Headers: {<br> 
+    &nbsp;Authorization: Bearer token <br>
+    }
+    </td>
+    <td>
+      {
+        id: number,<br>
+        title: string,<br>
+        content: string,<br>
+        createdAt: string,<br>
+        updatedAt: string,<br>
+        user: { id: number, name: string } }
+    </td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>/posts</td>
+    <td>Get all posts</td>
+    <td> --- </td>
+    <td>Array of post objects</td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>/posts/:id</td>
+    <td>Get a post by ID</td>
+    <td>---</td>
+    <td>
+      {
+        id: number,<br>
+        title: string,<br>
+        content: string,<br>
+        createdAt: string,<br>
+        updatedAt: string,<br>
+        user: { id: number, name: string } }
+    </td>
+  </tr>
+  <tr>
+    <td>PATCH</td>
+    <td>/posts/:id</td>
+    <td>Update a post by ID</td>
+    <td>
+    { 
+        title: string,<br> 
+        content: string
+    }<br><br>
+    Headers: {<br> 
+    &nbsp;Authorization: Bearer token <br>
+    }
+    </td>
+    <td>
+      {
+        id: number,<br>
+        title: string,<br>
+        content: string,<br>
+        createdAt: string,<br>
+        updatedAt: string,<br>
+        user: { id: number, name: string } }
+    </td>
+  </tr>
+  <tr>
+    <td>DELETE</td>
+    <td>/posts/:id</td>
+    <td>Delete a post by ID</td>
+    <td>
+    Headers: {<br> 
+    &nbsp;Authorization: Bearer token <br>
+    }
+    </td>
+    <td>
+      {
+        id: number,<br>
+        title: string,<br>
+        content: string,<br>
+        createdAt: string,<br>
+        updatedAt: string,<br>
+        user: { id: number, name: string } }
+    </td>
+  </tr>
+  <tr>
+    <td colspan="1"></td>
+    <td colspan="4"><strong>users</strong></td>
+  </tr>
+  <tr>
+    <td>POST</td>
+    <td>/users/signup</td>
+    <td>Create a new user</td>
+    <td>
+      {
+        email: string,<br>
+        firstname: string,<br>
+        lastname: string,<br>
+        password: string
+      }
+    </td>
+    <td>
+      {
+        token: string
+      }
+    </td>
+  </tr>
+  <tr>
+    <td>POST</td>
+    <td>/users/signin</td>
+    <td>Sign in existing user</td>
+    <td>
+      {
+        email: string,<br>
+        password: string
+      }
+    </td>
+    <td>
+      {
+        token: string
+      }
+    </td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>/users</td>
+    <td>Get all users</td>
+    <td>---</td>
+    <td>Array of user objects</td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>/users/:id</td>
+    <td>Get a user by ID</td>
+    <td>---</td>
+    <td>
+      {
+        id: number,<br>
+        email: string,<br>
+        createdAt: string,<br>
+        updatedAt: string
+      }
+    </td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>/users/me</td>
+    <td>Get info of logged user</td>
+    <td>
+    Headers: {<br> 
+    &nbsp;Authorization: Bearer token <br>
+    }
+    </td>
+    <td>
+      {
+        id: number,<br>
+        email: string,<br>
+        iat: number
+      }
+    </td>
+  </tr>
+</table>
+
+## Correr localmente
+
+### Clonar el repo e instalar dependencias
 
 ```bash
-$ npm install
+git clone https://github.com/nico-bt/posts-api.git
+npm install
 ```
 
-## Running the app
+### Configuración archivo .env
+
+Para configurar las variables de entorno, crea un archivo `.env` en el directorio raíz con el siguiente contenido:
+
+```plaintext
+DATABASE_USER=postgres
+DATABASE_PASSWORD=postgres
+DATABASE_NAME=postgres
+DATABASE_PORT=5432
+DATABASE_HOST=localhost
+```
+
+### Correr la app en modo desarrollo
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm run start:dev
 ```
 
-## Test
+## Tests
+
+### Unit tests
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm run test
 ```
 
-## Support
+### e2e Tests
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+```bash
+npm run test:e2e
+```
