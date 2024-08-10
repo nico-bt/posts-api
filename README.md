@@ -197,7 +197,7 @@ Techs:
 ### Clonar el repo e instalar dependencias
 
 ```bash
-git clone xxx-github-repo-xxx
+git clone https://github.com/nico-bt/posts-api.git
 npm install
 ```
 
