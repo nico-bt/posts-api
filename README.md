@@ -10,13 +10,13 @@ Techs:
 
 ## Entity Relationship Diagram
 
-![Entities Diagram](./tasks-er-diagram.png)
+![Entities Diagram](./readme_entities_diagram.png)
 
 ## API Endpoints:
 
 <table>
   <tr>
-    <th>HTTP Method</th>
+    <th>HTTP<br> Method</th>
     <th>Endpoint</th>
     <th>Description</th>
     <th>Payload</th>
@@ -29,7 +29,7 @@ Techs:
   <tr>
     <td>POST</td>
     <td>/posts</td>
-    <td>Create a new post</td>
+    <td>Create<br> a new post</td>
     <td>
         { 
             title: string,<br> 
@@ -59,7 +59,7 @@ Techs:
   <tr>
     <td>GET</td>
     <td>/posts/:id</td>
-    <td>Get a post by ID</td>
+    <td>Get a post<br> by ID</td>
     <td>---</td>
     <td>
       {
@@ -74,7 +74,7 @@ Techs:
   <tr>
     <td>PATCH</td>
     <td>/posts/:id</td>
-    <td>Update a post by ID</td>
+    <td>Update a<br> post by ID</td>
     <td>
     { 
         title: string,<br> 
@@ -97,7 +97,7 @@ Techs:
   <tr>
     <td>DELETE</td>
     <td>/posts/:id</td>
-    <td>Delete a post by ID</td>
+    <td>Delete a<br> post by ID</td>
     <td>
     Headers: {<br> 
     &nbsp;Authorization: Bearer token <br>
@@ -120,7 +120,7 @@ Techs:
   <tr>
     <td>POST</td>
     <td>/users/signup</td>
-    <td>Create a new user</td>
+    <td>Create a<br> new user</td>
     <td>
       {
         email: string,<br>
@@ -138,7 +138,7 @@ Techs:
   <tr>
     <td>POST</td>
     <td>/users/signin</td>
-    <td>Sign in existing user</td>
+    <td>Sign in an <br> existing user</td>
     <td>
       {
         email: string,<br>
@@ -161,7 +161,7 @@ Techs:
   <tr>
     <td>GET</td>
     <td>/users/:id</td>
-    <td>Get a user by ID</td>
+    <td>Get a<br> user by ID</td>
     <td>---</td>
     <td>
       {
@@ -175,7 +175,7 @@ Techs:
   <tr>
     <td>GET</td>
     <td>/users/me</td>
-    <td>Get info of logged user</td>
+    <td>Get info<br> of logged user</td>
     <td>
     Headers: {<br> 
     &nbsp;Authorization: Bearer token <br>
@@ -196,7 +196,7 @@ Techs:
 ### Clonar el repo e instalar dependencias
 
 ```bash
-git clone https://github.com/nico-bt/posts-api.git
+git clone xxx-github-repo-xxx
 npm install
 ```
 
@@ -205,11 +205,7 @@ npm install
 Para configurar las variables de entorno, crea un archivo `.env` en el directorio raíz con el siguiente contenido:
 
 ```plaintext
-DATABASE_USER=postgres
-DATABASE_PASSWORD=postgres
-DATABASE_NAME=postgres
-DATABASE_PORT=5432
-DATABASE_HOST=localhost
+JWT_SECRET=authentication_secret_key_is_used_in_the_process_of_signing_a_token
 ```
 
 ### Correr la app en modo desarrollo
