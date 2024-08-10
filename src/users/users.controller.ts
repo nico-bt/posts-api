@@ -7,6 +7,7 @@ import {
   ParseIntPipe,
   HttpCode,
   UseGuards,
+  NotFoundException,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -36,6 +37,7 @@ export class UsersController {
   }
 
   @UseGuards(AuthGuard)
+  @Serialize(UserResponseDto)
   @Get('me')
   userInfo(@CurrentUser() user: payloadJwtType) {
     return user;
@@ -49,7 +51,12 @@ export class UsersController {
 
   @Serialize(UserResponseDto)
   @Get(':id')
-  findOne(@Param('id', ParseIntPipe) id: number) {
-    return this.usersService.findOneById(id);
+  async findOne(@Param('id', ParseIntPipe) id: number) {
+    const user = await this.usersService.findOneById(id);
+
+    if (!user) {
+      throw new NotFoundException();
+    }
+    return user;
   }
 }
