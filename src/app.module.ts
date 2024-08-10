@@ -11,9 +11,9 @@ import { Post } from './posts/entities/post.entity';
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'sqlite',
-      database: 'db.sqlite',
+      database: process.env.NODE_ENV === 'test' ? 'test.sqlite' : 'db.sqlite',
       entities: [User, Post],
-      synchronize: true,
+      synchronize: true, //Only for development
     }),
     UsersModule,
     PostsModule,

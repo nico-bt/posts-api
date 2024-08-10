@@ -15,7 +15,7 @@ describe('Posts Module', () => {
   beforeAll(async () => {
     // DELETE DB before tests
     try {
-      await rm(join(__dirname, '..', 'db.sqlite'));
+      await rm(join(__dirname, '..', 'test.sqlite'));
     } catch (error) {
       // File not exists, continue
     }

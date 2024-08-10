@@ -7,6 +7,10 @@ Techs:
 - Nest.js
 - TypeORM
 - JWT para auth
+- SQLite, in-memory database  
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Archivos en root:
+  - development: db.sqlite
+  - e2e test: test.sqlite
 
 ## Entity Relationship Diagram
 
