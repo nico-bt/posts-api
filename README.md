@@ -185,7 +185,8 @@ Techs:
       {
         id: number,<br>
         email: string,<br>
-        iat: number
+        firstname: string,<br>
+        lastname: string
       }
     </td>
   </tr>
