@@ -196,6 +196,13 @@ describe('Posts Module', () => {
           statusCode: 404,
         });
     });
+
+    it('should throw an error if no token is passed in headers authorization', async () => {
+      await request(app.getHttpServer())
+        .patch('/posts/2')
+        .send({ title: 'No token', content: 'Not auth' })
+        .expect(403);
+    });
   });
 
   describe('DELETE - /posts/:id', () => {
