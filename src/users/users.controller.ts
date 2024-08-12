@@ -14,9 +14,10 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { AuthService } from './auth.service';
 import { SigninUserDto } from './dto/signin-user.dto';
 import { CurrentUser } from './decorators/current-user.decorator';
-import { AuthGuard, payloadJwtType } from 'src/guards/auth.guard';
+import { AuthGuard } from 'src/guards/auth.guard';
 import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { UserResponseDto } from './dto/user-response.dto';
+import { User } from './entities/user.entity';
 
 @Controller('users')
 export class UsersController {
@@ -39,7 +40,7 @@ export class UsersController {
   @UseGuards(AuthGuard)
   @Serialize(UserResponseDto)
   @Get('me')
-  userInfo(@CurrentUser() user: payloadJwtType) {
+  userInfo(@CurrentUser() user: User) {
     return user;
   }
 
