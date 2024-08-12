@@ -40,7 +40,7 @@ Techs:
             content: string 
         }<br><br>
     Headers: {<br> 
-    &nbsp;Authorization: Bearer&nbsp;&lt;token&gt; <br>
+    Authorization: Bearer&nbsp;&lt;token&gt; <br>
     }
     </td>
     <td>
@@ -85,7 +85,7 @@ Techs:
         content: string
     }<br><br>
     Headers: {<br> 
-    &nbsp;Authorization: Bearer&nbsp;&lt;token&gt; <br>
+    Authorization: Bearer&nbsp;&lt;token&gt; <br>
     }
     </td>
     <td>
@@ -104,7 +104,7 @@ Techs:
     <td>Delete a<br> post by ID</td>
     <td>
     Headers: {<br> 
-    &nbsp;Authorization: Bearer&nbsp;&lt;token&gt; <br>
+    Authorization: Bearer&nbsp;&lt;token&gt; <br>
     }
     </td>
     <td>
@@ -182,7 +182,7 @@ Techs:
     <td>Get info<br> of logged user</td>
     <td>
     Headers: {<br> 
-    &nbsp;Authorization: Bearer&nbsp;&lt;token&gt; <br>
+    Authorization: Bearer&nbsp;&lt;token&gt; <br>
     }
     </td>
     <td>
