@@ -202,6 +202,7 @@ Techs:
 
 ```bash
 git clone https://github.com/nico-bt/posts-api.git
+cd posts-api
 npm install
 ```
 
